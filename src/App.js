@@ -1,43 +1,55 @@
-import logo from './logo.svg';
-import './App.css';
-import { createStore } from 'redux';
+import { Provider } from "react-redux";
+
+import store from "./store";
+import { TodoList, TodoListStore } from "./compononents/TodoList";
+const ADD_TODO_ACTION = 'ADD_TODO_ACTION'
+
+// let id = 2;
+
+// const initialState = [
+//   {
+//     id: 1,
+//     title: 'Enregistrez la video',
+//     completed: false
+//   }, {
+//     id: 2,
+//     title: 'prepare the tuto',
+//     completed: true
+//   },
+// ]
+
+// function TodoReducer(state = initialState, action) {
+//   switch (action.type) {
+//     case ADD_TODO_ACTION:
+//       return [...state, {
+//         id: ++id,
+//         completed: false,
+//         ...action.payload,
+
+//       }]
+//     default:
+//       return state
+//   }
+// }
 
 
-//STORE -> GLOBALIZED STATE
+// const store = createStore(combineReducers({
+//   TodoReducer, filter:
+//     (state = 0, action) => state
+// }), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
-//ACTION INCREMENT
-const increment = () => {
-  return { type: 'INCREMENT' }
-}
-const decrement = () => {
-  return { type: 'DECREMENT' }
-}
+// store.subscribe(() => console.log(store.getState()))
 
-//REDUCER
-const counter = (state = 0, action) => {
-  switch (action.type) {
-    case 'INCREMENT':
-      return state + 1;
-    case 'DECREMENT':
-      return state - 1;
-  }
-}
+// store.dispatch({ type: ADD_TODO_ACTION, payload: { title: 'bla bla' } })
+// store.dispatch({ type: ADD_TODO_ACTION, payload: { title: 'bla bla' } })
+// store.dispatch({ type: ADD_TODO_ACTION, payload: { title: 'bla bla' } })
 
-let store = createStore(counter);
-
-//Display it on the console 
-store.subscribe(() => console.log(store.getState()))
-
-//Dispatch
-
-store.dispatch(increment());  
-store.dispatch(increment());  
-store.dispatch(increment());  
 function App() {
+  console.log("hi")
   return (
-    <div className="App">
-      <h1>Hello World</h1>
-    </div>
+    <Provider store={store} >
+      <TodoList />
+    </Provider >
   );
 }
 
