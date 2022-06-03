@@ -2,6 +2,7 @@ import { Provider } from "react-redux";
 
 import store from "./store";
 import { TodoList, TodoListStore } from "./compononents/TodoList";
+import { TodoFilter, TodoFilterStore } from "./compononents/filter/TodoFilter";
 const ADD_TODO_ACTION = 'ADD_TODO_ACTION'
 
 // let id = 2;
@@ -49,6 +50,7 @@ function App() {
   return (
     <Provider store={store} >
       <TodoList />
+      <TodoFilterStore />
     </Provider >
   );
 }
